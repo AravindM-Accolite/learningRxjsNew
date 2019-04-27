@@ -14,7 +14,7 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: [ '.ts', '.js' ]
+    extensions: ['.ts', '.js']
   },
   plugins: [
     new CopyWebpackPlugin([
@@ -25,5 +25,6 @@ module.exports = {
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist')
-  }
+  },
+  devtool: 'source-map'
 };
