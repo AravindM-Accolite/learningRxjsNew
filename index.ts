@@ -1,16 +1,22 @@
-import { concat, from, interval, of } from 'rxjs';
-import { allBooks } from './data';
+import { fromEvent } from 'rxjs';
+import { ajax } from 'rxjs/ajax';
+import { map } from 'rxjs/operators';
 
-//creating observables from data or object
+const button = document.getElementById('btn__get_data');
+const booksSection = document.getElementById('section__books');
 
-const source1$ = of('Hello', 'Everyone', 2019);
+const buttonClick$ = fromEvent(button, 'click');
 
-const source2$ = from(allBooks);
-
-const source3$ = interval(1000);
-
-// combining observables
-
-concat(source1$, source2$).subscribe(val => {
-  console.log(val);
+buttonClick$.subscribe(event => {
+  ajax('/api/books')
+    .pipe(
+      map(data => {
+        return data.response;
+      })
+    )
+    .subscribe(data => {
+      for (const book of data) {
+        booksSection.innerHTML += book.title + '</br>';
+      }
+    });
 });
