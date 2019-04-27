@@ -10,9 +10,8 @@
       "request": "launch",
       "preLaunchTask": "npm: start",
       "url": "http://localhost:3000/",
-      "webRoot": "${workspaceFolder}/dist",
-      "sourceMaps": true,
-      
+      "webRoot": "${workspaceFolder}",
+      "sourceMaps": true
     }
   ]
 }
