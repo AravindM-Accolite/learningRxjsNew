@@ -34,7 +34,7 @@ booksPromise = new Promise((resolve, reject) => {
 
 // continous data stream or event emmision
 
-function subscriber(sub: Subscriber<any>) {
+function subscribe(sub: Subscriber<any>) {
   for (const book of allBooks) {
     sub.next(book);
   }
@@ -47,7 +47,7 @@ function subscriber(sub: Subscriber<any>) {
   return () => console.log('Excuting before unsubscribe');
 }
 
-export const books$ = new Observable(subscriber);
+export const books$ = new Observable(subscribe);
 
 // books$.subscribe(result => console.log(result));
 
