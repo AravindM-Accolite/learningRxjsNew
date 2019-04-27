@@ -26,6 +26,12 @@ const observer = {
   complete: () => console.log('Completed')
 };
 
-source4$.subscibe(observer);
+// source4$.subscibe(observer);
 
 // subscribe method can take either observer object which contains above 3 methds or you can pass 3 arguments one for method for each
+
+// source4$.subscribe(
+//   item => console.log(item),
+//   error => console.error(error),
+//   () => console.log('Completed')
+// );
