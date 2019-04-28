@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs';
+import { Observable, Subscriber } from 'rxjs';
 import { ajax, AjaxResponse } from 'rxjs/ajax';
 import { filter, mergeMap, tap } from 'rxjs/operators';
 import { IBook } from '../data';
