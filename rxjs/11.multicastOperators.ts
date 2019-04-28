@@ -1,5 +1,5 @@
 import { interval } from 'rxjs';
-import { share, take } from 'rxjs/operators';
+import { take } from 'rxjs/operators';
 
 // multicast()
 // takes a subject as a parameter
@@ -16,12 +16,26 @@ import { share, take } from 'rxjs/operators';
 // Executes when observers > 0
 // re-subscribes as necessary
 
+// Asycn Subject
+
+// publishLast()
+// publish the last value to all observers
+
+// Behaviour subject
+// publishBehavior()
+
+// Reply subject
+// publishReplay()
+
 const interval$: any = interval(1000).pipe(
-  take(4),
+  take(4)
   // multicast(new Subject()),
   // publish(),
-  // refCount()
-  share()
+  // publishLast(),
+  // publishBehavior(20),
+  // publishReplay()
+  // refCount(),
+  // share(),
 );
 
 interval$.subscribe(data => console.log(`Observer 1 ${data}`));
