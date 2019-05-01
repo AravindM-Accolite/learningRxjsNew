@@ -7,6 +7,15 @@ import { take } from 'rxjs/operators';
 // it just works as unicast
 // example are interval() and ajax()
 
+// basic examples can be covered with cold observable as netflix or amazon prime whereas
+// hot observables can be considered as movie theater
+
+// code Observables are
+//    fileRead , ttp request , db queries etc
+
+// Hot observables are
+//    mouse and keyboard events
+
 // cold observable
 // const interval$ = interval(1000).pipe(take(4));
 
