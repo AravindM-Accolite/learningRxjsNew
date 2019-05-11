@@ -1,4 +1,4 @@
-import { from, Observable, Subscriber } from 'rxjs';
+import { Observable, Subscriber } from 'rxjs';
 // basic understanding of promises
 import { allBooks } from '../data';
 
@@ -71,3 +71,34 @@ const custom$ = Observable.create(subscriber2 => {
 // 2. Operators --
 // 3. Subject --  multi cast
 // 4. Schedulers - when to emit
+
+// sample examples of generator
+
+// function* helloGen() {
+//   console.log('Hello');
+//   yield;
+//   console.log('world');
+// }
+
+// function* helloGen() {
+//   yield 'Hello';
+//   yield 'world';
+// }
+
+// var iter = helloGen();
+
+// iter.next();
+// iter.next();
+
+// for (const iterator of iter) {
+//   console.log(iterator);
+// }
+
+// while (true) {
+//   let res = iter.next();
+//   if (res.done) {
+//     console.log('Completed');
+//     break;
+//   }
+//   console.log(res.value);
+// }
