@@ -13,6 +13,7 @@ import {
   reduce,
   scan,
   switchMap,
+  switchMapTo,
   take,
   tap
 } from 'rxjs/operators';
@@ -188,18 +189,43 @@ source$.pipe(
 // switchMap/ FlatMap
 // similar to exhaustMap except exhaust map rejects outer observables while switchMap rejects inner observables to further emits remaining iterations
 
-interval(5000)
-  .pipe(
-    take(5),
-    switchMap(res1 =>
-      timer(5000 - res1 * 1000, 1000).pipe(
-        tap(val => console.log(`Inner observable : ${val}`)),
-        take(5)
-      )
+interval(5000).pipe(
+  take(5),
+  switchMap(res1 =>
+    timer(5000 - res1 * 1000, 1000).pipe(
+      tap(val => console.log(`Inner observable : ${val}`)),
+      take(5)
     )
   )
-  .subscribe(
-    val => console.log(`Value  : ${val}`, new Date().getSeconds()),
-    err => console.log(`Error : ${err}`),
-    () => console.log(`Completed `)
-  );
+);
+//   .subscribe(
+//     val => console.log(`Value  : ${val}`, new Date().getSeconds()),
+//     err => console.log(`Error : ${err}`),
+//     () => console.log(`Completed `)
+//   );
+
+// mergeMapTo
+
+// emits innerObservables for each source Value
+
+// switchMapTo, exhaustMapTo similar to mergeMap to but retains the thier own behavior
+
+interval(3000).pipe(
+  take(5),
+  switchMapTo(
+    timer(1000, 1000).pipe(
+      // tap(val => console.log(`Inner observable : ${val}`)),
+      take(5)
+    )
+  )
+);
+//   .subscribe(
+//     val => console.log(`Value  : ${val}`, new Date().getSeconds()),
+//     err => console.log(`Error : ${err}`),
+//     () => console.log(`Completed `)
+//   );
+
+// concatMap (Will emit all inner observables in sequence)
+// mergeMap (Will emit all inner observables in way they appear (non sequencial))
+// exhaustMap (will reject outer observable if inner is still emitting)
+// switchMap (will reject inner observables if next is emitted by outer before inner finishes)
