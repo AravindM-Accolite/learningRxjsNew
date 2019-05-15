@@ -23,7 +23,7 @@
   "terminal.integrated.fontSize": 16,
 
   "editor.cursorBlinking": "solid",
-  "dimmer.enabled": true,
+  "dimmer.enabled": false,
   "workbench.colorCustomizations": {
     "titleBar.activeBackground": "#215732",
     "titleBar.inactiveBackground": "#21573299",
